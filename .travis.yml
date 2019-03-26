@@ -10,6 +10,9 @@ env:
 notifications:
   email: false
 
+#https://github.com/travis-ci/docs-travis-ci-com/issues/323
+install: true #skip
+
 # calls goreleaser
 deploy:
   - provider: script
