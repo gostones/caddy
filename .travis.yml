@@ -7,18 +7,20 @@ go:
 env:
   global:
     - GOARCH=amd64
+    - GO111MODULE=off
 notifications:
   email: false
 
-#https://github.com/travis-ci/docs-travis-ci-com/issues/323
-install: true #skip
+#
+install: true
+script: true
 
 # calls goreleaser
 deploy:
   - provider: script
     skip_cleanup: true
     # script: curl -sL https://git.io/goreleaser | bash
-    script: GOPATH=$PWD/build/go ./cicd/goreleaser.sh
+    script: ./cicd/goreleaser.sh
     on:
       tags: true
       condition: $TRAVIS_OS_NAME = linux
